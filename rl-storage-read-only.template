@@ -1,0 +1,240 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Prisma Cloud IAM Role to set read permissions",
+  "Parameters": {
+    "PrismaCloudRoleName": {
+      "Type": "String",
+      "Description": "Provide an role ARN name (Example: PrismaCloudReadOnlyRoleWithDLP)",
+      "AllowedPattern": "[-_a-zA-Z0-9]+",
+      "Default": "PrismaCloudReadOnlyRoleWithDLP"
+    },
+    "ExternalID": {
+      "Type": "String",
+      "Description": "Provide an ExternalID (Example: Xoih821ddwf)",
+      "MinLength": "1",
+      "ConstraintDescription": "ExternalID must contain alphanumeric characters and only these special characters are allowed =,.@:/-. "
+    }
+  },
+  "Resources": {
+    "PrismaCloudRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/SecurityAudit"
+        ],
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "arn:aws:iam::188619942792:root"
+              },
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": {
+                    "Ref": "ExternalID"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "PrismaCloud-IAM-ReadOnly-Policy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "apigateway:GET",
+                    "backup:ListBackupVaults",
+                    "backup:ListTags",
+                    "backup:GetBackupVaultAccessPolicy",
+                    "cloudwatch:ListTagsForResource",
+                    "cognito-identity:ListTagsForResource",
+                    "cognito-idp:ListTagsForResource",
+                    "ds:ListTagsForResource",
+                    "dynamodb:ListTagsOfResource",
+                    "ec2:GetEbsEncryptionByDefault",
+                    "ec2:SearchTransitGatewayRoutes",
+                    "ecr:DescribeImages",
+                    "ecr:GetLifecyclePolicy",
+                    "ecr:ListTagsForResource",
+                    "ecr-public:ListTagsForResource",
+                    "eks:ListFargateProfiles",
+                    "eks:DescribeFargateProfile",
+                    "eks:ListTagsForResource",
+                    "elasticbeanstalk:ListTagsForResource",
+                    "elasticfilesystem:DescribeTags",
+                    "elasticfilesystem:DescribeFileSystemPolicy",
+                    "elasticache:ListTagsForResource",
+                    "es:ListTags",
+                    "glacier:GetVaultLock",
+                    "glacier:ListTagsForVault",
+                    "glue:GetConnections",
+                    "glue:GetSecurityConfigurations",
+                    "logs:GetLogEvents",
+                    "mq:listBrokers",
+                    "mq:describeBroker",
+                    "ram:GetResourceShares",
+                    "sns:ListTagsForResource",
+                    "sns:ListPlatformApplications",
+                    "ssm:GetDocument",
+                    "ssm:GetParameters",
+                    "ssm:ListTagsForResource",
+                    "sqs:SendMessage",
+                    "elasticmapreduce:ListSecurityConfigurations",
+                    "elasticmapreduce:GetBlockPublicAccessConfiguration",
+                    "sns:listSubscriptions",
+                    "wafv2:ListResourcesForWebACL",
+                    "wafv2:ListWebACLs",
+                    "wafv2:ListTagsForResource",
+                    "wafv2:GetWebACL",
+                    "wafv2:GetLoggingConfiguration",
+                    "waf:GetWebACL",
+                    "waf:ListTagsForResource",
+                    "waf:GetLoggingConfiguration",
+                    "waf-regional:GetLoggingConfiguration",
+                    "waf-regional:ListResourcesForWebACL",
+                    "waf-regional:ListTagsForResource",
+                    "codebuild:BatchGetProjects",
+                    "ssm:GetInventory",
+                    "s3:ListJobs",
+                    "s3:GetJobTagging",
+                    "shield:GetSubscriptionState",
+                    "storagegateway:DescribeSMBFileShares",
+                    "storagegateway:DescribeSMBSettings"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Storage-ReadOnly-Policy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:GetObjectAcl",
+                    "s3:GetObjectTagging",
+                    "s3:GetObjectVersion",
+                    "s3:GetObjectVersionAcl",
+                    "s3:GetBucketAcl",
+                    "s3:GetBucketPolicy",
+                    "s3:GetBucketPolicyStatus",
+                    "s3:GetBucketPublicAccessBlock",
+                    "s3:GetBucketTagging",
+                    "s3:GetBucketVersioning",
+                    "s3:GetEncryptionConfiguration",
+                    "s3:GetBucketLocation",
+                    "s3:GetBucketNotification",
+                    "s3:ListBucket",
+                    "s3:ListBucketVersions",
+                    "s3:ListAllMyBuckets",
+                    "sns:GetSubscriptionAttributes",
+                    "sns:listSubscriptions",
+                    "sns:ListSubscriptionsByTopic"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Storage-Inventory-ConfigUpdate",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "RequiredForS3InventoryConfiguration",
+                  "Action": "s3:PutInventoryConfiguration",
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-IAM-ReadOnly-Policy-ElasticBeanstalk",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "RequiredForAwsElasticbeanstalkConfigurationSettingsApiIngestion",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "arn:aws:s3:::elasticbeanstalk-*/*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-ReadOnly-Policy-Compute",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:BatchGetImage",
+                    "ecr:GetAuthorizationToken",
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:GetLifecyclePolicyPreview",
+                    "kms:Decrypt",
+                    "lambda:GetLayerVersion",
+                    "secretsmanager:GetSecretValue",
+                    "ssm:GetParameter",
+                    "securityhub:BatchImportFindings",
+                    "lambda:GetFunction"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-ReadOnly-Compute-Policy-EKS-Audit",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "logs:StartQuery",
+                    "logs:GetQueryResults"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ],
+        "RoleName": {
+          "Ref": "PrismaCloudRoleName"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "PrismaCloudRoleARN": {
+      "Value": {
+        "Fn::GetAtt": [
+          "PrismaCloudRole",
+          "Arn"
+        ]
+      },
+      "Description": "Role ARN to configure within PrismaCloud Account Setup"
+    }
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Prisma Cloud IAM Role to set read write permissions",
+  "Parameters": {
+    "PrismaCloudRoleName": {
+      "Type": "String",
+      "Description": "Provide an role ARN name (Example: PrismaCloudReadWriteRole)",
+      "AllowedPattern": "[-_a-zA-Z0-9]+",
+      "Default": "PrismaCloudReadWriteRole"
+    },
+    "ExternalID": {
+      "Type": "String",
+      "Description": "Provide an ExternalID (Example: Xoih821ddwf)",
+      "MinLength": "1",
+      "AllowedPattern": "[a-zA-Z0-9\\=\\,\\.\\@\\:\\/\\-_]*",
+      "ConstraintDescription": "ExternalID must contain alphanumeric characters and only these special characters are allowed =,.@:/-."
+    }
+  },
+  "Resources": {
+    "PrismaCloudRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/SecurityAudit"
+        ],
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "arn:aws:iam::188619942792:root"
+              },
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": {
+                    "Ref": "ExternalID"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "PrismaCloud-IAM-ReadOnly-Policy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "apigateway:GET",
+                    "backup:ListBackupVaults",
+                    "backup:ListTags",
+                    "backup:GetBackupVaultAccessPolicy",
+                    "cloudwatch:ListTagsForResource",
+                    "codeartifact:ListDomains",
+                    "codeartifact:DescribeDomain",
+                    "codeartifact:GetDomainPermissionsPolicy",
+                    "codeartifact:ListTagsForResource",
+                    "codeartifact:ListRepositories",
+                    "codeartifact:DescribeRepository",
+                    "codeartifact:GetRepositoryPermissionsPolicy",
+                    "cognito-identity:ListTagsForResource",
+                    "cognito-identity:DescribeIdentityPool",
+                    "cognito-idp:ListTagsForResource",
+                    "ds:ListTagsForResource",
+                    "dynamodb:ListTagsOfResource",
+                    "ec2:GetEbsEncryptionByDefault",
+                    "ec2:SearchTransitGatewayRoutes",
+                    "ecr:DescribeImages",
+                    "ecr:GetLifecyclePolicy",
+                    "ecr:ListTagsForResource",
+                    "ecr-public:ListTagsForResource",
+                    "eks:ListFargateProfiles",
+                    "eks:DescribeFargateProfile",
+                    "eks:ListTagsForResource",
+                    "es:ListTags",
+                    "elasticbeanstalk:ListTagsForResource",
+                    "elasticfilesystem:DescribeTags",
+                    "elasticfilesystem:DescribeFileSystemPolicy",
+                    "elasticache:ListTagsForResource",
+                    "glacier:GetVaultLock",
+                    "glacier:ListTagsForVault",
+                    "glue:GetConnections",
+                    "glue:GetSecurityConfigurations",
+                    "kafka:ListClusters",
+                    "logs:GetLogEvents",
+                    "mq:listBrokers",
+                    "mq:describeBroker",
+                    "ram:GetResourceShares",
+                    "sns:ListTagsForResource",
+                    "sns:ListPlatformApplications",
+                    "ssm:GetDocument",
+                    "ssm:GetParameters",
+                    "ssm:ListTagsForResource",
+                    "sqs:SendMessage",
+                    "elasticmapreduce:ListSecurityConfigurations",
+                    "elasticmapreduce:GetBlockPublicAccessConfiguration",
+                    "sns:listSubscriptions",
+                    "wafv2:ListResourcesForWebACL",
+                    "wafv2:ListWebACLs",
+                    "wafv2:ListTagsForResource",
+                    "wafv2:GetWebACL",
+                    "wafv2:GetLoggingConfiguration",
+                    "waf:GetWebACL",
+                    "waf:ListTagsForResource",
+                    "waf-regional:GetLoggingConfiguration",
+                    "waf:GetLoggingConfiguration",
+                    "waf-regional:ListResourcesForWebACL",
+                    "waf-regional:ListTagsForResource",
+                    "codebuild:BatchGetProjects",
+                    "s3:DescribeJob",
+                    "s3:ListJobs",
+                    "s3:GetJobTagging",
+                    "ssm:GetInventory",
+                    "shield:GetSubscriptionState",
+                    "storagegateway:DescribeSMBFileShares",
+                    "storagegateway:DescribeSMBSettings"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-IAM-Remediation-Policy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "iam:UpdateAccountPasswordPolicy",
+                    "ec2:ModifyImageAttribute",
+                    "rds:ModifyDBSnapshotAttribute",
+                    "s3:PutBucketAcl",
+                    "ec2:RevokeSecurityGroupEgress",
+                    "ec2:RevokeSecurityGroupIngress",
+                    "ec2:ModifySnapshotAttribute",
+                    "cloudtrail:UpdateTrail",
+                    "rds:ModifyDBInstance",
+                    "redshift:ModifyCluster",
+                    "kms:EnableKeyRotation",
+                    "rds:ModifyEventSubscription",
+                    "eks:UpdateClusterConfig",
+                    "ec2:ModifySubnetAttribute",
+                    "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                    "cloudtrail:StartLogging",
+                    "elasticache:ModifyReplicationGroup",
+                    "s3:PutBucketVersioning",
+                    "s3:PutBucketPublicAccessBlock",
+                    "lambda:UpdateFunctionConfiguration",
+                    "ecs:UpdateClusterSettings",
+                    "rds:ModifyDBCluster",
+                    "rds:ModifyDBClusterSnapshotAttribute"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-IAM-ReadOnly-Policy-ElasticBeanstalk",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "RequiredForAwsElasticbeanstalkConfigurationSettingsApiIngestion",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "arn:aws:s3:::elasticbeanstalk-*/*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-ReadOnly-Policy-Compute",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:BatchGetImage",
+                    "ecr:GetAuthorizationToken",
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:GetLifecyclePolicyPreview",
+                    "kms:Decrypt",
+                    "secretsmanager:GetSecretValue",
+                    "ssm:GetParameter",
+                    "ssm:ListCommandInvocations",
+                    "lambda:GetFunction",
+                    "lambda:GetLayerVersion",
+                    "lambda:GetFunctionConfiguration",
+                    "apigateway:GET"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Remediation-Compute-Policy-AMIScan",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "ec2:AuthorizeSecurityGroupEgress",
+                    "ec2:AuthorizeSecurityGroupIngress",
+                    "ec2:CreateSecurityGroup",
+                    "ec2:CreateTags",
+                    "ec2:RevokeSecurityGroupEgress",
+                    "ec2:DeleteSecurityGroup",
+                    "ec2:RunInstances",
+                    "ec2:TerminateInstances"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-ReadOnly-Compute-Policy-EKS-Audit",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "logs:StartQuery",
+                    "logs:GetQueryResults"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Remediation-Compute-Policy-AlertProvider",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "securityhub:BatchImportFindings"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Remediation-Compute-Policy-ServerlessAutoDefend",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "lambda:PublishLayerVersion",
+                    "lambda:UpdateFunctionConfiguration",
+                    "lambda:DeleteLayerVersion"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+
+          {
+            "PolicyName": "PrismaCloud-Remediation-Compute-Policy-AgentlessScanning",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "PCCAgentlessRM",
+                  "Effect": "Allow",
+                  "Action": [
+                    "ec2:DeleteSnapshot",
+                    "ec2:ModifySnapshotAttribute",
+                    "ec2:TerminateInstances"
+                  ],
+                  "Resource": "*",
+                  "Condition": {
+                    "StringEquals": {
+                      "ec2:ResourceTag/created-by": "prismacloud-agentless-scan"
+                    }
+                  }
+                },
+                {
+                  "Sid": "PCCAgentlessTags",
+                  "Effect": "Allow",
+                  "Action": "ec2:CreateTags",
+                  "Resource": [
+                    "arn:aws:ec2:*::snapshot/*",
+                    "arn:aws:ec2:*:*:instance/*",
+                    "arn:aws:ec2:*:*:volume/*"
+
+                  ],
+                  "Condition": {
+                    "StringEquals": {
+                     "aws:RequestTag/created-by": "prismacloud-agentless-scan"
+                    }
+                  }
+                },
+                {
+                  "Sid": "PCCAgentlessRW",
+                  "Effect": "Allow",
+                  "Action": [
+                    "ec2:CreateSnapshots",
+                    "ec2:CreateSnapshot",
+                    "ec2:RunInstances"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Sid": "PCCAgentlessSTS",
+                  "Effect": "Allow",
+                  "Action": [
+                    "sts:DecodeAuthorizationMessage",
+                    "sts:GetCallerIdentity"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Sid": "PCCAgentlessKMS",
+                  "Effect": "Allow",
+                  "Action": [
+                    "kms:Decrypt",
+                    "kms:GenerateDataKeyWithoutPlaintext",
+                    "kms:ReEncryptFrom",
+                    "kms:Encrypt",
+                    "kms:ReEncryptTo",
+                    "kms:CreateGrant"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Sid": "PCCAgentlessSSM",
+                  "Effect": "Allow",
+                  "Action": "ssm:GetParameters",
+                  "Resource": "*"
+                }
+
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-Remediation-Compute-Policy-HostAutoDefend",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "ssm:SendCommand",
+                    "ssm:ListCommandInvocations",
+                    "ssm:CancelCommand",
+                    "ssm:CreateAssociation"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ],
+        "RoleName": {
+          "Ref": "PrismaCloudRoleName"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "PrismaCloudARN": {
+      "Value": {
+        "Fn::GetAtt": [
+          "PrismaCloudRole",
+          "Arn"
+        ]
+      },
+      "Description": "Role ARN to configure within PrismaCloud Account Setup"
+    }
+  }
+}
