@@ -95,7 +95,6 @@
                     "ssm:GetDocument",
                     "ssm:GetParameters",
                     "ssm:ListTagsForResource",
-                    "sqs:SendMessage",
                     "elasticmapreduce:ListSecurityConfigurations",
                     "elasticmapreduce:GetBlockPublicAccessConfiguration",
                     "sns:listSubscriptions",
