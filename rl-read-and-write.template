@@ -89,6 +89,8 @@
                     "logs:GetLogEvents",
                     "mq:listBrokers",
                     "mq:describeBroker",
+                    "mediastore:ListTagsForResource",
+                    "mediastore:GetCorsPolicy",
                     "ram:GetResourceShares",
                     "sns:ListTagsForResource",
                     "sns:ListPlatformApplications",
