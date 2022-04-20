@@ -21,8 +21,10 @@
       "Type": "AWS::IAM::Role",
       "Properties": {
         "ManagedPolicyArns": [
-          "arn:aws:iam::aws:policy/SecurityAudit"
+          "arn:aws:iam::aws:policy/SecurityAudit",
+          "arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess"
         ],
+        "MaxSessionDuration" : 43200,
         "AssumeRolePolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
@@ -86,6 +88,14 @@
                     "glue:GetConnections",
                     "glue:GetSecurityConfigurations",
                     "kafka:ListClusters",
+                    "lex:GetBot",
+                    "lex:GetBots",
+                    "lex:GetBotVersions",
+                    "lex:ListTagsForResource",
+                    "lex:ListBotVersions",
+                    "lex:ListBots",
+                    "lex:DescribeBotVersion",
+                    "lex:DescribeBot",
                     "logs:GetLogEvents",
                     "mq:listBrokers",
                     "mq:describeBroker",
@@ -366,6 +376,25 @@
                     "ssm:ListCommandInvocations",
                     "ssm:CancelCommand",
                     "ssm:CreateAssociation"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "PrismaCloud-ReadOnly-Policy-Bridgecrew",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "s3:ListBucket",
+                    "lambda:GetLayerVersion",
+                    "lambda:GetEventSourceMapping",
+                    "lambda:GetFunction",
+                    "sns:GetSubscriptionAttributes"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
