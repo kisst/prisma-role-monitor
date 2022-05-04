@@ -53,6 +53,9 @@
                 {
                   "Action": [
                     "apigateway:GET",
+                    "acm-pca:ListTags",
+                    "acm-pca:GetPolicy",
+                    "acm-pca:ListCertificateAuthorities",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
@@ -72,6 +75,7 @@
                     "ec2:GetEbsEncryptionByDefault",
                     "ec2:SearchTransitGatewayRoutes",
                     "ecr:DescribeImages",
+                    "ecr:GetRegistryScanningConfiguration",
                     "ecr:GetLifecyclePolicy",
                     "ecr:ListTagsForResource",
                     "ecr-public:ListTagsForResource",

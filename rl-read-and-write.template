@@ -53,6 +53,9 @@
                 {
                   "Action": [
                     "apigateway:GET",
+                    "acm-pca:ListTags",
+                    "acm-pca:GetPolicy",
+                    "acm-pca:ListCertificateAuthorities",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
@@ -73,6 +76,7 @@
                     "ec2:SearchTransitGatewayRoutes",
                     "ecr:DescribeImages",
                     "ecr:GetLifecyclePolicy",
+                    "ecr:GetRegistryScanningConfiguration",
                     "ecr:ListTagsForResource",
                     "ecr-public:ListTagsForResource",
                     "eks:ListFargateProfiles",
