@@ -100,6 +100,7 @@
                     "lex:ListBots",
                     "lex:DescribeBotVersion",
                     "lex:DescribeBot",
+                    "lakeformation:GetDataLakeSettings",
                     "logs:GetLogEvents",
                     "mq:listBrokers",
                     "mq:describeBroker",

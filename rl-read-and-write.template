@@ -101,6 +101,7 @@
                     "lex:DescribeBotVersion",
                     "lex:DescribeBot",
                     "logs:GetLogEvents",
+                    "lakeformation:GetDataLakeSettings",
                     "mq:listBrokers",
                     "mq:describeBroker",
                     "mediastore:ListTagsForResource",
