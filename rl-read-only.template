@@ -92,6 +92,7 @@
                     "glue:GetConnections",
                     "glue:GetSecurityConfigurations",
                     "kafka:ListClusters",
+                    "lambda:GetFunctionUrlConfig",
                     "lex:GetBot",
                     "lex:GetBots",
                     "lex:GetBotVersions",

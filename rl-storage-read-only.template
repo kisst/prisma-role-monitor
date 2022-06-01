@@ -78,6 +78,7 @@
                     "glacier:ListTagsForVault",
                     "glue:GetConnections",
                     "glue:GetSecurityConfigurations",
+                    "lambda:GetFunctionUrlConfig",
                     "logs:GetLogEvents",
                     "mq:listBrokers",
                     "mq:describeBroker",
