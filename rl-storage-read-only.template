@@ -52,6 +52,8 @@
                 {
                   "Action": [
                     "apigateway:GET",
+                    "airflow:GetEnvironment",
+                    "airflow:ListEnvironments",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",

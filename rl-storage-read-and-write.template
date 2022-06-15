@@ -52,6 +52,8 @@
                 {
                   "Action": [
                     "apigateway:GET",
+                    "airflow:GetEnvironment",
+                    "airflow:ListEnvironments",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
@@ -145,7 +147,8 @@
                     "lambda:UpdateFunctionConfiguration",
                     "ecs:UpdateClusterSettings",
                     "rds:ModifyDBCluster",
-                    "rds:ModifyDBClusterSnapshotAttribute"
+                    "rds:ModifyDBClusterSnapshotAttribute",
+                    "acm:UpdateCertificateOptions"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
