@@ -63,6 +63,12 @@
                     "appstream:DescribeImages",
                     "appstream:DescribeFleets",
                     "appstream:ListTagsForResource",
+                    "apprunner:DescribeAutoScalingConfiguration",
+                    "apprunner:ListAutoScalingConfigurations",
+                    "apprunner:ListTagsForResource",
+                    "apprunner:ListServices",
+                    "apprunner:DescribeCustomDomains",
+                    "apprunner:DescribeService",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
@@ -325,6 +331,13 @@
                       "ec2:ResourceTag/created-by": "prismacloud-agentless-scan"
                     }
                   }
+                },
+                {
+                  "Sid": "PCCAgentlessServiceLinkedRole",
+                  "Effect": "Allow",
+                  "Action": "iam:CreateServiceLinkedRole",
+                  "Resource": "arn:aws:iam::*:role/aws-service-role/spot.amazonaws.com/*",
+                  "Condition": {"StringLike": {"iam:AWSServiceName": "spot.amazonaws.com"}}
                 },
                 {
                   "Sid": "PCCAgentlessTags",
