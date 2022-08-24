@@ -159,6 +159,8 @@
                     "transcribe:ListLanguageModels",
                     "transcribe:ListTagsForResource",
                     "shield:GetSubscriptionState",
+                    "states:DescribeStateMachine",
+                    "states:ListTagsForResource",
                     "storagegateway:DescribeSMBFileShares",
                     "storagegateway:DescribeSMBSettings"
                   ],

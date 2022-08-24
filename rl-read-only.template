@@ -159,6 +159,8 @@
                     "s3:GetJobTagging",
                     "ssm:GetInventory",
                     "shield:GetSubscriptionState",
+                    "states:DescribeStateMachine",
+                    "states:ListTagsForResource",
                     "storagegateway:DescribeSMBFileShares",
                     "storagegateway:DescribeSMBSettings"
                   ],

@@ -133,6 +133,8 @@
                     "s3:ListJobs",
                     "s3:GetJobTagging",
                     "shield:GetSubscriptionState",
+                    "states:DescribeStateMachine",
+                    "states:ListTagsForResource",
                     "storagegateway:DescribeSMBFileShares",
                     "storagegateway:DescribeSMBSettings"
                   ],
