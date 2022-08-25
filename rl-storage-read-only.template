@@ -193,6 +193,25 @@
             }
           },
           {
+            "PolicyName": "PrismaCloud-Storage-Data-Classification-CopyObject",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                    "Sid": "RequiredForDataClassificationUsingCopyObject",
+                    "Effect": "Allow",
+                    "Action": [
+                      "s3:PutObject",
+                      "s3:PutObjectAcl"
+                    ],
+                    "Resource": [
+                      "arn:aws:s3:::pcds*"
+                    ]
+                }
+              ]
+            }
+          },
+          {
             "PolicyName": "PrismaCloud-IAM-ReadOnly-Policy-ElasticBeanstalk",
             "PolicyDocument": {
               "Version": "2012-10-17",
