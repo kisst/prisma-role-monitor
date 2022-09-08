@@ -71,6 +71,7 @@
                     "apprunner:DescribeService",
                     "appflow:DescribeFlow",
                     "appflow:ListFlows",
+                    "amplify:ListApps",
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
