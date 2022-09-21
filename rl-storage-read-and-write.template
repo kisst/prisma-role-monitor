@@ -160,7 +160,11 @@
                     "states:DescribeStateMachine",
                     "states:ListTagsForResource",
                     "storagegateway:DescribeSMBFileShares",
-                    "storagegateway:DescribeSMBSettings"
+                    "storagegateway:DescribeSMBSettings",
+                    "translate:GetTerminology",
+                    "qldb:ListLedgers",
+                    "qldb:DescribeLedger",    
+                    "qldb:ListTagsForResource"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
