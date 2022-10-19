@@ -51,6 +51,7 @@
               "Statement": [
                 {
                   "Action": [
+                    "account:GetAlternateContact",
                     "apigateway:GET",
                     "airflow:GetEnvironment",
                     "airflow:ListEnvironments",
@@ -89,6 +90,7 @@
                     "codeartifact:GetRepositoryPermissionsPolicy",
                     "ds:ListTagsForResource",
                     "dynamodb:ListTagsOfResource",
+                    "devops-guru:DescribeServiceIntegration",
                     "ec2:GetEbsEncryptionByDefault",
                     "ec2:SearchTransitGatewayRoutes",
                     "ecr:DescribeImages",
@@ -112,6 +114,8 @@
                     "grafana:DescribeWorkspaceAuthentication",
                     "grafana:ListWorkspaces",
                     "kafka:ListClusters",
+                    "kinesisanalytics:ListTagsForResource",
+                    "kinesisanalytics:DescribeApplication",
                     "lambda:GetFunctionUrlConfig",
                     "lakeformation:GetDataLakeSettings",
                     "lex:GetBot",
