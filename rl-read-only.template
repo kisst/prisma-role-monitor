@@ -76,6 +76,7 @@
                     "backup:ListBackupVaults",
                     "backup:ListTags",
                     "backup:GetBackupVaultAccessPolicy",
+                    "cloud9:ListTagsForResource",
                     "cloudwatch:ListTagsForResource",
                     "cognito-identity:ListTagsForResource",
                     "cognito-identity:DescribeIdentityPool",
