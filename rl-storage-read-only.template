@@ -126,6 +126,8 @@
                     "kafka:ListClusters",
                     "kinesisanalytics:ListTagsForResource",
                     "kinesisanalytics:DescribeApplication",
+                    "kendra:DescribeIndex",
+                    "kendra:ListTagsForResource",
                     "lambda:GetFunctionUrlConfig",
                     "lakeformation:GetDataLakeSettings",
                     "logs:GetLogEvents",
@@ -186,7 +188,15 @@
                     "translate:GetTerminology",
                     "qldb:ListLedgers",
                     "qldb:DescribeLedger",    
-                    "qldb:ListTagsForResource"
+                    "qldb:ListTagsForResource",
+                    "identitystore:ListUsers",
+                    "identitystore:ListGroups",
+                    "identitystore:ListGroupMemberships",
+                    "sso:ListInstances",
+                    "sso:ListPermissionSets",
+                    "sso:ListAccountsForProvisionedPermissionSet",
+                    "sso:ListAccountAssignments",
+                    "sso:DescribePermissionSet"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"

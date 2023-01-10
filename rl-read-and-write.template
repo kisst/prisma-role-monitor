@@ -125,6 +125,8 @@
                     "grafana:DescribeWorkspace",
                     "grafana:DescribeWorkspaceAuthentication",
                     "grafana:ListWorkspaces",
+                    "kendra:DescribeIndex",
+                    "kendra:ListTagsForResource",
                     "kafka:ListClusters",
                     "kinesisanalytics:ListTagsForResource",
                     "kinesisanalytics:DescribeApplication",
@@ -189,7 +191,15 @@
                     "translate:GetTerminology",
                     "qldb:ListLedgers",
                     "qldb:DescribeLedger",    
-                    "qldb:ListTagsForResource"
+                    "qldb:ListTagsForResource",
+                    "identitystore:ListUsers",
+                    "identitystore:ListGroups",
+                    "identitystore:ListGroupMemberships",
+                    "sso:ListInstances",
+                    "sso:ListPermissionSets",
+                    "sso:ListAccountsForProvisionedPermissionSet",
+                    "sso:ListAccountAssignments",
+                    "sso:DescribePermissionSet"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
@@ -360,12 +370,33 @@
                   "Action": [
                     "ec2:DeleteSnapshot",
                     "ec2:ModifySnapshotAttribute",
-                    "ec2:TerminateInstances"
+                    "ec2:TerminateInstances",
+                    "ec2:DeleteInternetGateway",
+                    "ec2:AttachInternetGateway",
+                    "ec2:DetachInternetGateway",
+                    "ec2:DeleteVpc",
+                    "ec2:CreateSubnet",
+                    "ec2:DeleteSubnet"
                   ],
                   "Resource": "*",
                   "Condition": {
                     "StringEquals": {
                       "ec2:ResourceTag/created-by": "prismacloud-agentless-scan"
+                    }
+                  }
+                },
+                {
+                  "Sid": "PCCAgentlessNetworkActions",
+                  "Effect": "Allow",
+                  "Action": [
+                    "ec2:CreateInternetGateway",
+                    "ec2:CreateSubnet",
+                    "ec2:CreateVpc"
+                  ],
+                  "Resource": "*",
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:RequestTag/created-by": "prismacloud-agentless-scan"
                     }
                   }
                 },
@@ -383,8 +414,10 @@
                   "Resource": [
                     "arn:aws:ec2:*::snapshot/*",
                     "arn:aws:ec2:*:*:instance/*",
-                    "arn:aws:ec2:*:*:volume/*"
-
+                    "arn:aws:ec2:*:*:volume/*",
+                    "arn:aws:ec2:*:*:vpc/*",
+                    "arn:aws:ec2:*:*:subnet/*",
+                    "arn:aws:ec2:*:*:internet-gateway/*"
                   ],
                   "Condition": {
                     "StringEquals": {
@@ -398,7 +431,13 @@
                   "Action": [
                     "ec2:CreateSnapshots",
                     "ec2:CreateSnapshot",
-                    "ec2:RunInstances"
+                    "ec2:RunInstances",
+                    "ec2:CreateRoute",
+                    "ec2:DescribeRouteTables",
+                    "ec2:DescribeInternetGateways",
+                    "ec2:DescribeVpcs",
+                    "ec2:DescribeNetworkInterfaces",
+                    "ec2:DeleteNetworkInterface"
                   ],
                   "Resource": "*"
                 },
