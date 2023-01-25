@@ -72,6 +72,8 @@
                     "apprunner:DescribeService",
                     "appflow:DescribeFlow",
                     "appflow:ListFlows",
+                    "aps:DescribeLoggingConfiguration",
+                    "aps:ListWorkspaces",
                     "amplify:ListApps",
                     "backup:ListBackupVaults",
                     "backup:ListTags",

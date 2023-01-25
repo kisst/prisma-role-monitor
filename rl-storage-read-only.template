@@ -68,6 +68,8 @@
                     "apprunner:ListServices",
                     "apprunner:DescribeCustomDomains",
                     "apprunner:DescribeService",
+                    "aps:DescribeLoggingConfiguration",
+                    "aps:ListWorkspaces",
                     "amplify:ListApps",
                     "acm-pca:ListTags",
                     "acm-pca:GetPolicy",

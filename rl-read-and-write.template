@@ -70,6 +70,8 @@
                     "apprunner:ListServices",
                     "apprunner:DescribeCustomDomains",
                     "apprunner:DescribeService",
+                    "aps:DescribeLoggingConfiguration",
+                    "aps:ListWorkspaces",
                     "appflow:DescribeFlow",
                     "appflow:ListFlows",
                     "amplify:ListApps",

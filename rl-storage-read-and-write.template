@@ -68,6 +68,8 @@
                     "apprunner:DescribeService",
                     "appflow:DescribeFlow",
                     "appflow:ListFlows",
+                    "aps:DescribeLoggingConfiguration",
+                    "aps:ListWorkspaces",
                     "amplify:ListApps",
                     "acm-pca:ListTags",
                     "acm-pca:GetPolicy",
