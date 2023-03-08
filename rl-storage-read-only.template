@@ -175,6 +175,7 @@
                     "elasticmapreduce:ListSecurityConfigurations",
                     "elasticmapreduce:GetBlockPublicAccessConfiguration",
                     "sns:listSubscriptions",
+                    "cognito-idp:ListResourcesForWebACL",
                     "wafv2:ListResourcesForWebACL",
                     "wafv2:ListWebACLs",
                     "wafv2:ListTagsForResource",
