@@ -103,6 +103,8 @@
                     "eks:DescribeFargateProfile",
                     "elasticfilesystem:DescribeTags",
                     "elasticfilesystem:DescribeFileSystemPolicy",
+                    "fms:GetAdminAccount",
+                    "fms:GetPolicy",
                     "forecast:DescribePredictor",
                     "forecast:DescribeAutoPredictor",
                     "forecast:ListTagsForResource",
@@ -177,7 +179,18 @@
                     "sso:ListInstances",
                     "sso:ListPermissionSets",
                     "sso:ListAccountsForProvisionedPermissionSet",
-                    "sso:ListAccountAssignments"
+                    "sso:ListAccountAssignments",
+                    "devicefarm:ListProjects",
+                    "elastictranscoder:ListPipelines",
+                    "resiliencehub:ListApps",
+                    "managedblockchain:ListNetworks",
+                    "cognito-sync:ListIdentityPoolUsage",
+                    "servicecatalog:ListApplications",
+                    "servicecatalog:ListAttributeGroups",
+                    "servicecatalog:ListPortfolios",
+                    "elasticbeanstalk:DescribeApplications",
+                    "iotanalytics:ListDatastores",
+                    "iotevents:ListInputs"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"

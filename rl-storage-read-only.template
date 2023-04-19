@@ -117,6 +117,8 @@
                     "elasticfilesystem:DescribeFileSystemPolicy",
                     "elasticache:ListTagsForResource",
                     "es:ListTags",
+                    "fms:GetAdminAccount",
+                    "fms:GetPolicy",
                     "forecast:DescribePredictor",
                     "forecast:DescribeAutoPredictor",
                     "forecast:ListTagsForResource",
@@ -211,7 +213,18 @@
                     "sso:ListPermissionSets",
                     "sso:ListAccountsForProvisionedPermissionSet",
                     "sso:ListAccountAssignments",
-                    "sso:DescribePermissionSet"
+                    "sso:DescribePermissionSet",
+                    "devicefarm:ListProjects",
+                    "elastictranscoder:ListPipelines",
+                    "resiliencehub:ListApps",
+                    "managedblockchain:ListNetworks",
+                    "cognito-sync:ListIdentityPoolUsage",
+                    "servicecatalog:ListApplications",
+                    "servicecatalog:ListAttributeGroups",
+                    "servicecatalog:ListPortfolios",
+                    "elasticbeanstalk:DescribeApplications",
+                    "iotanalytics:ListDatastores",
+                    "iotevents:ListInputs"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
