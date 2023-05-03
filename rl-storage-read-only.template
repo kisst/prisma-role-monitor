@@ -224,7 +224,20 @@
                     "servicecatalog:ListPortfolios",
                     "elasticbeanstalk:DescribeApplications",
                     "iotanalytics:ListDatastores",
-                    "iotevents:ListInputs"
+                    "iotevents:ListInputs",
+                    "comprehend:ListEntitiesDetectionJobs",
+                    "comprehendmedical:ListEntitiesDetectionV2Jobs",
+                    "greengrass:ListCoreDefinitions",
+                    "greengrass:ListGroups",
+                    "iotfleetwise:ListSignalCatalogs",
+                    "lookoutequipment:ListDatasets",
+                    "lookoutmetrics:ListAnomalyDetectors",
+                    "lookoutvision:ListProjects",
+                    "opsworks:DescribeUserProfiles",
+                    "polly:DescribeVoices",
+                    "securityhub:DescribeStandards",
+                    "servicediscovery:ListNamespaces",
+                    "swf:ListDomains"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
