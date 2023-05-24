@@ -380,7 +380,17 @@
                     "lambda:GetLayerVersion",
                     "lambda:GetEventSourceMapping",
                     "lambda:GetFunction",
-                    "sns:GetSubscriptionAttributes"
+                    "sns:GetSubscriptionAttributes",
+                    "ecr:DescribeRegistry",
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:BatchGetImage",
+                    "ecr:BatchGetRepositoryScanningConfiguration",
+                    "ecr:DescribeImageReplicationStatus",
+                    "ecr:DescribePullThroughCacheRules",
+                    "ecr:GetAuthorizationToken",
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:GetLifecyclePolicyPreview",
+                    "ecr:GetRegistryPolicy"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
