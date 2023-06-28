@@ -205,7 +205,8 @@
                     "polly:DescribeVoices",
                     "securityhub:DescribeStandards",
                     "servicediscovery:ListNamespaces",
-                    "swf:ListDomains"
+                    "swf:ListDomains",
+                    "cloudhsm:DescribeClusters"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"

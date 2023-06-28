@@ -202,7 +202,8 @@
                     "polly:DescribeVoices",
                     "securityhub:DescribeStandards",
                     "servicediscovery:ListNamespaces",
-                    "swf:ListDomains"
+                    "swf:ListDomains",
+                    "cloudhsm:DescribeClusters"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
@@ -240,7 +241,9 @@
                     "ecs:UpdateClusterSettings",
                     "rds:ModifyDBCluster",
                     "rds:ModifyDBClusterSnapshotAttribute",
-                    "acm:UpdateCertificateOptions"
+                    "acm:UpdateCertificateOptions",
+                    "lambda:UpdateFunctionUrlConfig",
+                    "s3:PutBucketOwnershipControls"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
