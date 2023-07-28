@@ -238,7 +238,9 @@
                     "securityhub:DescribeStandards",
                     "servicediscovery:ListNamespaces",
                     "swf:ListDomains",
-                    "cloudhsm:DescribeClusters"
+                    "cloudhsm:DescribeClusters",
+                    "ce:GetCostAndUsage",
+                    "macie2:ListOrganizationAdminAccounts"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
