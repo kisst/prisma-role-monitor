@@ -208,7 +208,8 @@
                     "swf:ListDomains",
                     "cloudhsm:DescribeClusters",
                     "ce:GetCostAndUsage",
-                    "macie2:ListOrganizationAdminAccounts"
+                    "macie2:ListOrganizationAdminAccounts",
+                    "support:DescribeCases"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
