@@ -241,7 +241,10 @@
                     "cloudhsm:DescribeClusters",
                     "ce:GetCostAndUsage",
                     "macie2:ListOrganizationAdminAccounts",
-                    "support:DescribeCases"
+                    "support:DescribeCases",
+                    "elasticfilesystem:DescribeAccessPoints",
+                    "ssm:GetInventory",
+                    "ssm:GetInventorySchema"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
