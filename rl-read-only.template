@@ -212,7 +212,12 @@
                     "support:DescribeCases",
                     "elasticfilesystem:DescribeAccessPoints",
                     "ssm:GetInventory",
-                    "ssm:GetInventorySchema"
+                    "ssm:GetInventorySchema",
+                    "glue:ListCrawlers",
+                    "glue:GetCrawler",
+                    "backup:ListBackupPlans",
+                    "backup:GetBackupPlan",
+                    "backup:ListTags"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"

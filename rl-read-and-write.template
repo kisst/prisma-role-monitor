@@ -213,7 +213,12 @@
                     "support:DescribeCases",
                     "elasticfilesystem:DescribeAccessPoints",
                     "ssm:GetInventory",
-                    "ssm:GetInventorySchema"
+                    "ssm:GetInventorySchema",
+                    "glue:ListCrawlers",
+                    "glue:GetCrawler",
+                    "backup:ListBackupPlans",
+                    "backup:GetBackupPlan",
+                    "backup:ListTags"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
@@ -253,7 +258,8 @@
                     "rds:ModifyDBClusterSnapshotAttribute",
                     "acm:UpdateCertificateOptions",
                     "lambda:UpdateFunctionUrlConfig",
-                    "s3:PutBucketOwnershipControls"
+                    "s3:PutBucketOwnershipControls",
+                    "ec2:ModifyInstanceMetadataOptions"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
