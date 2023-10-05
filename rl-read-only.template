@@ -217,7 +217,10 @@
                     "glue:GetCrawler",
                     "backup:ListBackupPlans",
                     "backup:GetBackupPlan",
-                    "backup:ListTags"
+                    "backup:ListTags",
+                    "wellarchitected:GetWorkload",
+                    "wellarchitected:ListWorkloads",
+                    "budgets:ViewBudget"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
