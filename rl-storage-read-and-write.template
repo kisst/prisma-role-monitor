@@ -217,7 +217,8 @@
                     "backup:ListTags",
                     "wellarchitected:GetWorkload",
                     "wellarchitected:ListWorkloads",
-                    "budgets:ViewBudget"
+                    "budgets:ViewBudget",
+                    "wafv2:GetRuleGroup"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
