@@ -218,7 +218,11 @@
                     "wellarchitected:GetWorkload",
                     "wellarchitected:ListWorkloads",
                     "budgets:ViewBudget",
-                    "wafv2:GetRuleGroup"
+                    "wafv2:GetRuleGroup",
+                    "auditmanager:GetAssessment",
+                    "auditmanager:GetControl",
+                    "mgn:DescribeLaunchConfigurationTemplates",
+                    "ec2:GetLaunchTemplateData"
                   ],
                   "Effect": "Allow",
                   "Resource": "*"
