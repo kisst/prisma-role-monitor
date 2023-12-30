@@ -7,7 +7,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Download from S3
         run: |
           wget -O rl-read-only.template https://redlock-public.s3.amazonaws.com/cft/rl-read-only.template
